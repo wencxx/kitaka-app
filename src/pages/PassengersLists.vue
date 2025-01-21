@@ -53,7 +53,7 @@ const passengersLists = ref([])
 
 const getPassengers = async () => {
     try {
-        const res = await axios.get('https://kitaka-server.vercel.app//get-passengers')
+        const res = await axios.get('https://inclucity-server.vercel.app/get-passengers')
 
         passengersLists.value = res.data
     } catch (error) {
