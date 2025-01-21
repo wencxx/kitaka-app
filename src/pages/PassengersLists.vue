@@ -22,18 +22,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="border text-center py-1">Jerry Abeniso</td>
-                        <td class="border text-center py-1">23 yrs old</td>
-                        <td class="border text-center py-1">Male</td>
-                        <td class="border text-center py-1">09638806212</td>
-                        <td class="border text-center py-1">La Castellana, Negros Occidental</td>
-                        <td class="border text-center py-1">Present</td>
-                        <td class="border text-center py-1">Jefferson 101</td>
-                        <td class="border text-center py-1">Charoute</td>
-                        <td class="border text-center py-1">10:30 AM</td>
-                        <td class="border text-center py-1">3:30 PM</td>
-                        <td class="border text-center py-1">Francis M.</td>
+                    <tr v-for="passenger in passengersLists" :key="passenger.wristbandId">
+                        <td class="border text-center py-1">{{ passenger.fullName }}</td>
+                        <td class="border text-center py-1">{{ passenger.age }}</td>
+                        <td class="border text-center py-1">{{ passenger.gender }}</td>
+                        <td class="border text-center py-1">{{ passenger.contact }}</td>
+                        <td class="border text-center py-1">{{ passenger.address }}</td>
+                        <td class="border text-center py-1">{{ passenger.identification }}</td>
+                        <td class="border text-center py-1">{{ passenger.shipName }}</td>
+                        <td class="border text-center py-1">{{ routeFrom }} - {{ passenger.routeTo }}</td>
+                        <td class="border text-center py-1">{{ passenger.inboundTime }}</td>
+                        <td class="border text-center py-1">{{ passenger.outboundTime }}</td>
+                        <td class="border text-center py-1">{{ passenger.operatorName }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -42,5 +42,22 @@
 </template>
 
 <script setup>
+import axios from "axios";
+import { onMounted, ref } from "vue";
 
+onMounted(() => {
+    getPassengers()
+})
+
+const passengersLists = ref([])
+
+const getPassengers = async () => {
+    try {
+        const res = await axios.get('https://kitaka-server.vercel.app//get-passengers')
+
+        passengersLists.value = res.data
+    } catch (error) {
+        console.log(error)
+    }
+}
 </script>
