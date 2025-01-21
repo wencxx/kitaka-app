@@ -8,6 +8,7 @@
             <table class="w-[600%]">
                 <thead>
                     <tr>
+                        <th class="border w-1/12">Wristband Id</th>
                         <th class="border w-1/12">Full Name</th>
                         <th class="border w-1/12">Age</th>
                         <th class="border w-1/12">Gender</th>
@@ -23,6 +24,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="passenger in passengersLists" :key="passenger.wristbandId">
+                        <td class="border text-center py-1">{{ passenger.wristbandId }}</td>
                         <td class="border text-center py-1">{{ passenger.fullName }}</td>
                         <td class="border text-center py-1">{{ passenger.age }}</td>
                         <td class="border text-center py-1">{{ passenger.gender }}</td>
