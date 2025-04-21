@@ -25,6 +25,7 @@ import 'leaflet/dist/leaflet.css';
 import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
 import L from 'leaflet'
 import axios from "axios";
+import { connection } from '../connection/connection'
 
 const zoom = ref(13)
 let intervalId = null;
@@ -46,7 +47,7 @@ onUnmounted(() => {
 
 const getPassengers = async () => {
     try {
-        const res = await axios.get('https://inclucity-server.vercel.app/get-passengers')
+        const res = await axios.get(`${connection()}get-passengers`)
 
         passengersLists.value = res.data
     } catch (error) {

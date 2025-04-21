@@ -46,6 +46,7 @@
 <script setup>
 import axios from "axios";
 import { onMounted, ref } from "vue";
+import { connection } from '../connection/connection'
 
 onMounted(() => {
     getPassengers()
@@ -55,7 +56,7 @@ const passengersLists = ref([])
 
 const getPassengers = async () => {
     try {
-        const res = await axios.get('https://inclucity-server.vercel.app/get-passengers')
+        const res = await axios.get(`${connection()}get-passengers`)
 
         passengersLists.value = res.data
     } catch (error) {

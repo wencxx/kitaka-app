@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import PassengerLists from '../pages/PassengersLists.vue'
 import AddPassenger from '../pages/AddPassenger.vue'
 import Mapping from '../pages/Mapping.vue'
+import Alerts from '../pages/Alerts.vue'
 
 const routes = [
     {
@@ -18,6 +19,11 @@ const routes = [
         path: '/map',
         name: 'map',
         component: Mapping
+    },
+    {
+        path: '/alerts',
+        name: 'alerts',
+        component: Alerts
     }
 ]
 

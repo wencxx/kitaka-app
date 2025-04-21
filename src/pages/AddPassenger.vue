@@ -80,6 +80,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { connection } from '../connection/connection'
 
 
 const passengerDetails = ref({
@@ -105,7 +106,7 @@ const addPassenger = async () => {
     try {
         added.value = false
         isLoading.value = true
-        const res = await axios.post('https://inclucity-server.vercel.app/add-passenger', passengerDetails.value)
+        const res = await axios.post(`${connection()}add-passenger`, passengerDetails.value)
 
         passengerDetails.value = {
             fullName: '',

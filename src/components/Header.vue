@@ -22,6 +22,10 @@
                 <Icon icon="bxs:map" class="text-2xl" />
                 <span>Map</span>
               </router-link>
+              <router-link :to="{ name: 'alerts' }" class="flex items-center gap-x-2 px-5 py-2 hover:bg-black/10">
+                <Icon icon="entypo:message" class="text-2xl" />
+                <span>Alert Notifications</span>
+              </router-link>
             </li>
           </ul>
         </div>
